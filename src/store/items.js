@@ -36,6 +36,20 @@ export const getItems = (id) => async (dispatch) => {
 	}
 };
 
+export const editItem = (item) => async (dispatch) => {
+	const response = await fetch(`/api/items/${item.id}`, {
+		method: 'PUT',
+		headers: {'Content-Type': 'application/json'},
+		body: JSON.stringify(item)
+	})
+
+	if (response.ok) {
+		const editedItem = await response.json();
+		dispatch(update(editedItem))
+		return editedItem
+	}
+}
+
 const initialState = {};
 
 const itemsReducer = (state = initialState, action) => {
