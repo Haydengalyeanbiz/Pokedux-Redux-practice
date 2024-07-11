@@ -6,6 +6,7 @@ import items from './items';
 const rootReducer = combineReducers({
   pokemon,
   items
+
 });
 
 let enhancer;
